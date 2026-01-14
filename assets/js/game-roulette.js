@@ -153,7 +153,7 @@ class Roulette {
         // Draw center circle
         ctx.beginPath();
         ctx.arc(centerX, centerY, 15, 0, Math.PI * 2);
-        ctx.fillStyle = var(--accent-gold);
+        ctx.fillStyle = '#d4af37';
         ctx.fill();
 
         // Draw pointer
@@ -161,7 +161,7 @@ class Roulette {
         ctx.moveTo(centerX, centerY - radius - 20);
         ctx.lineTo(centerX - 10, centerY - radius);
         ctx.lineTo(centerX + 10, centerY - radius);
-        ctx.fillStyle = var(--accent-gold);
+        ctx.fillStyle = '#d4af37';
         ctx.fill();
     }
 

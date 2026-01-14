@@ -22,12 +22,14 @@ class SpinWheel {
 
     initGame() {
         this.renderWheel();
-        this.setupEventListeners();
     }
 
     renderWheel() {
         const container = document.getElementById('spinwheel-container');
-        if (!container) return;
+        if (!container) {
+            console.error('Spin wheel container not found!');
+            return;
+        }
 
         const html = `
             <div class="spinwheel-layout">
@@ -54,13 +56,7 @@ class SpinWheel {
                     <div class="segments-list">
                         <h4>Possible Wins:</h4>
                         <ul>
-        `;
-
-        this.segments.forEach(segment => {
-            html += `<li><span class="segment-dot" style="background: ${segment.color};"></span> ${segment.label}</li>`;
-        });
-
-        html += `
+                            ${this.segments.map(seg => `<li><span class="segment-dot" style="background: ${seg.color};"></span> ${seg.label}</li>`).join('')}
                         </ul>
                     </div>
 
@@ -74,14 +70,21 @@ class SpinWheel {
         `;
 
         container.innerHTML = html;
-        this.drawWheel();
-        this.updateCreditsDisplay();
-        this.setupEventListeners();
+        
+        // Draw wheel after HTML is inserted
+        setTimeout(() => {
+            this.drawWheel();
+            this.updateCreditsDisplay();
+            this.setupEventListeners();
+        }, 100);
     }
 
     drawWheel() {
         const canvas = document.getElementById('spinwheel-canvas');
-        if (!canvas) return;
+        if (!canvas) {
+            console.error('Canvas not found!');
+            return;
+        }
 
         const ctx = canvas.getContext('2d');
         const centerX = canvas.width / 2;
@@ -145,278 +148,226 @@ class SpinWheel {
         }
     }
 
+    updateCreditsDisplay() {
+        const credits = window.creditSystem ? window.creditSystem.getCredits() : 1000;
+        const display = document.getElementById('current-credits');
+        if (display) {
+            display.textContent = credits;
+        }
+    }
+
     spin() {
         if (this.isSpinning) return;
 
-        if (!creditSystem.deductCredits(50)) {
-            soundSystem.playSound('loss');
-            creditSystem.showNotification('Insufficient credits! You need 50 credits to spin.', 'error');
+        const credits = window.creditSystem ? window.creditSystem.getCredits() : 1000;
+        const spinCost = 50;
+
+        if (credits < spinCost) {
+            this.showResult('Not enough credits! You need at least 50 credits to spin.', 'error');
             return;
         }
 
+        // Deduct spin cost
+        if (window.creditSystem) {
+            window.creditSystem.deductCredits(spinCost);
+        }
+
         this.isSpinning = true;
-        soundSystem.playSound('click');
-
-        const spinBtn = document.getElementById('spin-btn');
-        spinBtn.disabled = true;
-        spinBtn.textContent = 'SPINNING...';
-
-        const randomSegment = Math.floor(Math.random() * this.segments.length);
-        const targetRotation = (randomSegment / this.segments.length) * 360 + 1800; // 5 full rotations + target
-
-        this.animateSpin(targetRotation, randomSegment);
-    }
-
-    animateSpin(targetRotation, winningSegmentIndex) {
+        const resultSegment = this.segments[Math.floor(Math.random() * this.segments.length)];
+        
+        // Animate spin
         const canvas = document.getElementById('spinwheel-canvas');
         if (!canvas) return;
 
-        const duration = 4000; // 4 seconds
+        const ctx = canvas.getContext('2d');
+        const spins = 5 + Math.random() * 3;
+        const targetRotation = this.currentRotation + (spins * 360) + (Math.random() * 360);
+        const duration = 3000;
         const startTime = Date.now();
         const startRotation = this.currentRotation;
 
         const animate = () => {
             const elapsed = Date.now() - startTime;
             const progress = Math.min(elapsed / duration, 1);
-
-            // Easing function for smooth deceleration
-            const easeProgress = 1 - Math.pow(1 - progress, 4);
-            const rotation = startRotation + (targetRotation - startRotation) * easeProgress;
-
-            canvas.style.transform = `rotate(${rotation}deg)`;
-            this.currentRotation = rotation;
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            
+            this.currentRotation = startRotation + (targetRotation - startRotation) * easeOut;
+            
+            ctx.save();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate((this.currentRotation * Math.PI) / 180);
+            ctx.translate(-canvas.width / 2, -canvas.height / 2);
+            
+            this.drawWheel();
+            
+            ctx.restore();
 
             if (progress < 1) {
                 requestAnimationFrame(animate);
             } else {
-                this.showResult(winningSegmentIndex);
+                this.isSpinning = false;
+                this.handleWin(resultSegment);
             }
         };
 
         animate();
     }
 
-    showResult(segmentIndex) {
-        this.isSpinning = false;
-
-        const winningSegment = this.segments[segmentIndex];
-        creditSystem.addCredits(winningSegment.value);
-
-        const resultArea = document.getElementById('spin-result');
-        resultArea.innerHTML = `
-            <div class="win-result">
-                <h3>🎉 Congratulations! 🎉</h3>
-                <p>You won: <strong>${winningSegment.label}</strong></p>
-                <p class="win-message">Your credits have been added!</p>
-                <button class="btn btn-primary" onclick="location.reload()">Spin Again</button>
-            </div>
-        `;
-        resultArea.style.display = 'block';
-
-        soundSystem.playSound('win');
+    handleWin(segment) {
+        if (window.creditSystem) {
+            window.creditSystem.addCredits(segment.value);
+        }
+        
         this.updateCreditsDisplay();
-
-        const spinBtn = document.getElementById('spin-btn');
-        spinBtn.disabled = false;
-        spinBtn.textContent = '🎡 SPIN NOW';
+        this.showResult(`🎉 You won ${segment.value} credits!`, 'success');
     }
 
-    updateCreditsDisplay() {
-        const creditsDisplay = document.getElementById('current-credits');
-        if (creditsDisplay) {
-            creditsDisplay.textContent = creditSystem.getCredits();
+    showResult(message, type) {
+        const resultDiv = document.getElementById('spin-result');
+        if (resultDiv) {
+            resultDiv.textContent = message;
+            resultDiv.className = `result-box ${type}`;
+            resultDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                resultDiv.style.display = 'none';
+            }, 5000);
         }
     }
 }
 
 // Initialize game when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('spinwheel-container')) {
+    console.log('DOM loaded, checking for spin wheel container...');
+    const container = document.getElementById('spinwheel-container');
+    if (container) {
+        console.log('Container found, initializing spin wheel...');
         window.spinWheel = new SpinWheel();
+    } else {
+        console.error('Spin wheel container not found!');
     }
 });
 
 // Add CSS for spin wheel
-const spinwheelStyles = document.createElement('style');
-spinwheelStyles.textContent = `
+const spinWheelStyles = document.createElement('style');
+spinWheelStyles.textContent = `
     .spinwheel-layout {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        gap: 3rem;
         margin: 2rem 0;
-        align-items: center;
     }
-
     .wheel-container {
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: var(--primary-dark);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
         padding: 2rem;
-        border-radius: 12px;
-        border: 3px solid var(--accent-gold);
     }
-
     .wheel-pointer {
         position: absolute;
-        top: -15px;
+        top: -10px;
         left: 50%;
         transform: translateX(-50%);
         width: 0;
         height: 0;
         border-left: 15px solid transparent;
         border-right: 15px solid transparent;
-        border-top: 25px solid var(--accent-gold);
+        border-top: 25px solid #d4af37;
         z-index: 10;
-        filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
     }
-
     #spinwheel-canvas {
+        display: block;
         max-width: 100%;
         height: auto;
-        transition: transform 0.1s linear;
     }
-
     .spinwheel-info {
-        background: var(--primary-light);
-        padding: 2rem;
-        border-radius: 12px;
-        border: 2px solid var(--accent-purple);
+        display: flex;
+        flex-direction: column;
     }
-
     .spinwheel-info h3 {
-        color: var(--accent-gold);
+        color: #d4af37;
         margin-bottom: 1rem;
-        font-size: 1.5rem;
     }
-
-    .spinwheel-info p {
-        color: var(--text-muted);
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-    }
-
     .spin-stats {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
-        margin-bottom: 1.5rem;
+        margin: 1.5rem 0;
     }
-
     .stat-box {
-        background: var(--primary-dark);
+        background: rgba(139, 92, 246, 0.1);
         padding: 1rem;
         border-radius: 8px;
-        border: 1px solid var(--accent-purple);
+        border: 2px solid #8b5cf6;
         text-align: center;
     }
-
     .stat-box label {
         display: block;
-        color: var(--text-muted);
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        color: #d4af37;
         margin-bottom: 0.5rem;
     }
-
     .stat-box span {
-        display: block;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 700;
-        color: var(--accent-gold);
+        color: white;
     }
-
     .segments-list {
-        background: var(--primary-dark);
-        padding: 1rem;
+        background: rgba(10, 14, 39, 0.6);
+        padding: 1.5rem;
         border-radius: 8px;
-        border: 1px solid var(--accent-gold);
-        margin-bottom: 1.5rem;
+        border: 1px solid #8b5cf6;
+        margin: 1rem 0;
     }
-
     .segments-list h4 {
-        color: var(--accent-gold);
-        margin-bottom: 0.8rem;
-        font-size: 0.95rem;
-    }
-
-    .segments-list ul {
-        list-style: none;
-    }
-
-    .segments-list li {
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        padding: 0.5rem 0;
-        color: var(--text-muted);
-        font-size: 0.9rem;
-    }
-
-    .segment-dot {
-        display: inline-block;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 2px solid white;
-    }
-
-    #spin-btn {
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
-
-    #spin-btn:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-
-    .win-result {
-        text-align: center;
-    }
-
-    .win-result h3 {
-        color: var(--success);
-        font-size: 1.5rem;
+        color: #d4af37;
         margin-bottom: 1rem;
     }
-
-    .win-result p {
-        color: var(--text-light);
-        margin-bottom: 0.5rem;
+    .segments-list ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
-
-    .win-result p strong {
-        color: var(--accent-gold);
-        font-size: 1.2rem;
+    .segments-list li {
+        padding: 0.5rem 0;
+        color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
     }
-
-    .win-message {
-        color: var(--success) !important;
+    .segment-dot {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .result-box {
+        padding: 1rem;
+        border-radius: 8px;
+        text-align: center;
         font-weight: 600;
-        margin-bottom: 1.5rem !important;
     }
-
+    .result-box.success {
+        background: rgba(34, 197, 94, 0.2);
+        border: 2px solid #22c55e;
+        color: #22c55e;
+    }
+    .result-box.error {
+        background: rgba(239, 68, 68, 0.2);
+        border: 2px solid #ef4444;
+        color: #ef4444;
+    }
     @media (max-width: 768px) {
         .spinwheel-layout {
             grid-template-columns: 1fr;
         }
-
-        .wheel-container {
-            padding: 1rem;
-        }
-
-        #spinwheel-canvas {
-            max-width: 300px;
-        }
-
         .spin-stats {
             grid-template-columns: 1fr;
         }
-
-        .spinwheel-info {
-            padding: 1.5rem;
-        }
     }
 `;
-document.head.appendChild(spinwheelStyles);
+document.head.appendChild(spinWheelStyles);
