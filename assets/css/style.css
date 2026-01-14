@@ -30,8 +30,9 @@ html {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(26, 31, 58, 0.95) 100%), url('../images/casino-bg.jpg') no-repeat center center fixed;
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(26, 31, 58, 0.95) 100%), url('/assets/images/casino-bg.jpg') no-repeat center center fixed;
     background-size: cover;
+    background-attachment: fixed;
     color: var(--text-light);
     line-height: 1.6;
     min-height: 100vh;

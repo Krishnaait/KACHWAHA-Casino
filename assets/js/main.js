@@ -63,10 +63,18 @@ class CreditSystem {
     }
 
     updateDisplay() {
+        const credits = this.getCredits();
+        
+        // Update header credit display
         const creditDisplay = document.querySelector('.credits-display');
         if (creditDisplay) {
-            const credits = this.getCredits();
-            creditDisplay.innerHTML = `<span class="coin-icon">💰</span> ${credits} Credits`;
+            creditDisplay.innerHTML = `<span class="coin-icon">💰</span> <span>${credits} Credits</span>`;
+        }
+        
+        // Update game page credit display
+        const currentBalance = document.getElementById('current-balance');
+        if (currentBalance) {
+            currentBalance.textContent = credits;
         }
     }
 
