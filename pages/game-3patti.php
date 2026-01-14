@@ -13,7 +13,7 @@
     <!-- HEADER -->
     <header>
         <div class="header-container">
-            <a href="../index.php" class="logo">♠️ KACHWAHA ♠️</a>
+            <a href="../index.php" class="logo"><img src="../assets/images/kachwaha-logo.png" alt="KACHWAHA Casino" style="height: 50px;"></a>
             <nav>
                 <ul>
                     <li><a href="../index.php">Home</a></li>
