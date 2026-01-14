@@ -19,6 +19,9 @@
                     <li><a href="../index.php">Home</a></li>
                     <li><a href="games.php">Games</a></li>
                     <li><a href="about.php">About Us</a></li>
+                    <li><a href="how-to-play.php">How to Play</a></li>
+                    <li><a href="faq.php">FAQ</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </nav>
             <div class="credits-display">
@@ -136,6 +139,9 @@
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="games.php">Games</a></li>
                         <li><a href="about.php">About Us</a></li>
+                    <li><a href="how-to-play.php">How to Play</a></li>
+                    <li><a href="faq.php">FAQ</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                         <li><a href="faq.php">FAQ</a></li>
                     </ul>
                 </div>
