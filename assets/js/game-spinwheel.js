@@ -149,6 +149,12 @@ class SpinWheel {
     }
 
     updateCreditsDisplay() {
+        // Update both game display and header via main credit system
+        if (window.creditSystem) {
+            window.creditSystem.updateDisplay();
+        }
+        
+        // Also update local game display
         const credits = window.creditSystem ? window.creditSystem.getCredits() : 1000;
         const display = document.getElementById('current-credits');
         if (display) {

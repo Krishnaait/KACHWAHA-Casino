@@ -16,6 +16,8 @@ class CreditSystem {
             this.setCredits(1000);
         }
         this.checkDailyBonus();
+        // Update display after initialization to show correct credits
+        this.updateDisplay();
     }
 
     getCredits() {
@@ -166,13 +168,14 @@ class SoundSystem {
 }
 
 // ===== GLOBAL INSTANCES =====
-let creditSystem;
-let soundSystem;
+// Make these globally accessible to all game files
+window.creditSystem = null;
+window.soundSystem = null;
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    creditSystem = new CreditSystem();
-    soundSystem = new SoundSystem();
+    window.creditSystem = new CreditSystem();
+    window.soundSystem = new SoundSystem();
     setupEventListeners();
 });
 
@@ -182,7 +185,7 @@ function setupEventListeners() {
     const bonusBtn = document.querySelector('[data-action="daily-bonus"]');
     if (bonusBtn) {
         bonusBtn.addEventListener('click', () => {
-            creditSystem.checkDailyBonus();
+            window.creditSystem.checkDailyBonus();
         });
     }
 
@@ -190,8 +193,8 @@ function setupEventListeners() {
     const resetBtn = document.querySelector('[data-action="reset-credits"]');
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
-            if (creditSystem.getCredits() === 0) {
-                creditSystem.resetCredits();
+            if (window.creditSystem.getCredits() === 0) {
+                window.creditSystem.resetCredits();
             }
         });
     }
@@ -200,7 +203,7 @@ function setupEventListeners() {
     const topupBtn = document.querySelector('[data-action="topup-credits"]');
     if (topupBtn) {
         topupBtn.addEventListener('click', () => {
-            creditSystem.topupCredits();
+            window.creditSystem.topupCredits();
         });
     }
 
@@ -266,7 +269,7 @@ function animateNumber(element, start, end, duration = 1000) {
 document.addEventListener('keydown', (e) => {
     // Press 'S' to toggle sound
     if (e.key === 's' || e.key === 'S') {
-        soundSystem.toggleSound();
+        window.soundSystem.toggleSound();
     }
 });
 

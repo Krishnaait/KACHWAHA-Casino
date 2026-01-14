@@ -68,13 +68,13 @@ class ThreePatti {
 
         if (bet <= 0) {
             soundSystem.playSound('loss');
-            creditSystem.showNotification('Please enter a valid bet amount', 'error');
+            window.creditSystem.showNotification('Please enter a valid bet amount', 'error');
             return;
         }
 
-        if (!creditSystem.deductCredits(bet)) {
+        if (!window.creditSystem.deductCredits(bet)) {
             soundSystem.playSound('loss');
-            creditSystem.showNotification('Insufficient credits!', 'error');
+            window.creditSystem.showNotification('Insufficient credits!', 'error');
             return;
         }
 
@@ -192,9 +192,9 @@ class ThreePatti {
 
     raise() {
         const raiseAmount = this.playerBet * 2;
-        if (!creditSystem.deductCredits(raiseAmount)) {
+        if (!window.creditSystem.deductCredits(raiseAmount)) {
             soundSystem.playSound('loss');
-            creditSystem.showNotification('Insufficient credits for raise!', 'error');
+            window.creditSystem.showNotification('Insufficient credits for raise!', 'error');
             return;
         }
 
@@ -224,7 +224,7 @@ class ThreePatti {
 
             if (playerScore > dealerScore) {
                 winnings = this.playerBet * 2;
-                creditSystem.addCredits(winnings);
+                window.creditSystem.addCredits(winnings);
                 message = `🎉 You Win! ${playerRank} beats ${dealerRank}! +${winnings} Credits`;
                 soundSystem.playSound('win');
             } else {

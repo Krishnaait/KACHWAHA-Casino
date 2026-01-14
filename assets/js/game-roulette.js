@@ -199,13 +199,13 @@ class Roulette {
 
         if (!this.betType) {
             soundSystem.playSound('loss');
-            creditSystem.showNotification('Please select a bet first!', 'error');
+            window.creditSystem.showNotification('Please select a bet first!', 'error');
             return;
         }
 
-        if (!creditSystem.deductCredits(this.currentBet)) {
+        if (!window.creditSystem.deductCredits(this.currentBet)) {
             soundSystem.playSound('loss');
-            creditSystem.showNotification('Insufficient credits!', 'error');
+            window.creditSystem.showNotification('Insufficient credits!', 'error');
             return;
         }
 
@@ -269,7 +269,7 @@ class Roulette {
         let message = '';
 
         if (won) {
-            creditSystem.addCredits(winnings);
+            window.creditSystem.addCredits(winnings);
             message = `🎉 You Won! Winning Number: ${winningNumber} | +${winnings} Credits`;
             soundSystem.playSound('win');
         } else {

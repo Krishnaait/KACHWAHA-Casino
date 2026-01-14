@@ -162,13 +162,13 @@ class Bingo {
 
         if (bet <= 0) {
             soundSystem.playSound('loss');
-            creditSystem.showNotification('Please enter a valid bet amount', 'error');
+            window.creditSystem.showNotification('Please enter a valid bet amount', 'error');
             return;
         }
 
-        if (!creditSystem.deductCredits(bet)) {
+        if (!window.creditSystem.deductCredits(bet)) {
             soundSystem.playSound('loss');
-            creditSystem.showNotification('Insufficient credits!', 'error');
+            window.creditSystem.showNotification('Insufficient credits!', 'error');
             return;
         }
 
@@ -199,7 +199,7 @@ class Bingo {
 
     drawNumber() {
         if (this.drawnNumbers.length >= 75) {
-            creditSystem.showNotification('All numbers have been drawn!', 'error');
+            window.creditSystem.showNotification('All numbers have been drawn!', 'error');
             return;
         }
 
@@ -313,7 +313,7 @@ class Bingo {
 
         this.gameState = 'won';
         const winnings = this.currentBet * 5; // 5x payout
-        creditSystem.addCredits(winnings);
+        window.creditSystem.addCredits(winnings);
 
         soundSystem.playSound('win');
 
