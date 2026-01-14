@@ -164,13 +164,26 @@ class ThreePatti {
         const controlsArea = document.getElementById('game-controls');
         if (!controlsArea) return;
 
+        controlsArea.style.display = 'flex';
+        controlsArea.style.gap = '1rem';
+        controlsArea.style.flexWrap = 'wrap';
+        controlsArea.style.justifyContent = 'center';
+        controlsArea.style.marginTop = '1.5rem';
+
         controlsArea.innerHTML = `
-            <button class="btn btn-primary" id="call-btn">Call (Match Bet)</button>
-            <button class="btn btn-secondary" id="raise-btn">Raise (2x Bet)</button>
-            <button class="btn btn-danger" id="fold-btn">Fold (Give Up)</button>
+            <button class="btn btn-primary" id="call-btn" style="flex: 1; min-width: 150px;">Call (Match Bet)</button>
+            <button class="btn btn-secondary" id="raise-btn" style="flex: 1; min-width: 150px;">Raise (2x Bet)</button>
+            <button class="btn" id="fold-btn" style="flex: 1; min-width: 150px; background: #ef4444; color: white;">Fold (Give Up)</button>
         `;
 
-        this.setupEventListeners();
+        // Re-attach event listeners for the new buttons
+        const callBtn = document.getElementById('call-btn');
+        const raiseBtn = document.getElementById('raise-btn');
+        const foldBtn = document.getElementById('fold-btn');
+
+        if (callBtn) callBtn.addEventListener('click', () => this.call());
+        if (raiseBtn) raiseBtn.addEventListener('click', () => this.raise());
+        if (foldBtn) foldBtn.addEventListener('click', () => this.fold());
     }
 
     call() {

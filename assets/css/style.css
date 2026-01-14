@@ -30,7 +30,8 @@ html {
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.95) 0%, rgba(26, 31, 58, 0.95) 100%), url('../images/casino-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: var(--text-light);
     line-height: 1.6;
     min-height: 100vh;
@@ -772,5 +773,333 @@ footer {
 
     .game-explanation {
         padding: 1.5rem;
+    }
+}
+
+
+/* ===== ENHANCED CARD GRAPHICS ===== */
+.card {
+    width: 80px;
+    height: 120px;
+    background: white;
+    border-radius: 8px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border: 2px solid #d4af37;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+}
+
+.card-rank {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-align: center;
+}
+
+.card-suit {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.card.red {
+    color: #dc2626;
+}
+
+.card.black {
+    color: #1f2937;
+}
+
+.card-hidden {
+    background: url('../images/card-back.png') center center no-repeat;
+    background-size: cover;
+    border: 2px solid var(--accent-purple);
+    color: transparent;
+}
+
+.card-hidden::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+    opacity: 0.1;
+    border-radius: 6px;
+}
+
+/* ===== ENHANCED GAME AREA STYLING ===== */
+.game-play-area {
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.9), rgba(10, 14, 39, 0.9));
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--accent-gold);
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+}
+
+.player-section, .dealer-section {
+    margin-bottom: 2rem;
+}
+
+.player-section h3, .dealer-section h3 {
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 140px;
+    align-items: center;
+}
+
+.bet-info {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    border: 1px solid var(--accent-gold);
+}
+
+.bet-info strong {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+}
+
+/* ===== BINGO GRID STYLING ===== */
+.bingo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark));
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3);
+}
+
+.bingo-cell {
+    aspect-ratio: 1;
+    background: white;
+    border: 2px solid var(--accent-gold);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--primary-dark);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.bingo-cell:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.bingo-cell.marked {
+    background: linear-gradient(135deg, var(--accent-gold), #fbbf24);
+    color: var(--primary-dark);
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.6);
+}
+
+.bingo-cell.marked::after {
+    content: '✓';
+    position: absolute;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    font-weight: 900;
+}
+
+.bingo-cell.free {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark));
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* ===== ROULETTE & SPIN WHEEL ENHANCEMENTS ===== */
+.wheel-container {
+    position: relative;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.wheel-container canvas {
+    background: transparent !important;
+    filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.3));
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid var(--accent-gold);
+    filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.5));
+    z-index: 10;
+}
+
+/* ===== BETTING OPTIONS STYLING ===== */
+.betting-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.bet-option {
+    background: var(--primary-light);
+    border: 2px solid var(--accent-purple);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.bet-option:hover {
+    background: var(--accent-purple);
+    border-color: var(--accent-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+}
+
+.bet-option.selected {
+    background: linear-gradient(135deg, var(--accent-gold), #fbbf24);
+    border-color: var(--accent-gold);
+    color: var(--primary-dark);
+    font-weight: 700;
+}
+
+.bet-option .option-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.bet-option .option-payout {
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+}
+
+.bet-option.selected .option-payout {
+    color: var(--primary-dark);
+}
+
+/* ===== CHIP STACK DECORATION ===== */
+.credit-section::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background: url('../images/casino-chips.png') center center no-repeat;
+    background-size: contain;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* ===== GAME ICONS ===== */
+.game-card-header::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background: url('../images/coin-icon.png') center center no-repeat;
+    background-size: contain;
+    opacity: 0.2;
+}
+
+/* ===== LOADING ANIMATION ===== */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinning {
+    animation: spin 3s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+/* ===== RESPONSIVE CARD SIZING ===== */
+@media (max-width: 768px) {
+    .card {
+        width: 60px;
+        height: 90px;
+        padding: 6px;
+    }
+
+    .card-rank {
+        font-size: 1.2rem;
+    }
+
+    .card-suit {
+        font-size: 1.5rem;
+    }
+
+    .bingo-grid {
+        max-width: 350px;
+        gap: 6px;
+        padding: 1rem;
+    }
+
+    .bingo-cell {
+        font-size: 1.2rem;
+    }
+
+    .wheel-container {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 50px;
+        height: 75px;
+        padding: 4px;
+    }
+
+    .card-rank {
+        font-size: 1rem;
+    }
+
+    .card-suit {
+        font-size: 1.2rem;
+    }
+
+    .bingo-grid {
+        max-width: 280px;
+        gap: 4px;
+    }
+
+    .bingo-cell {
+        font-size: 1rem;
     }
 }
