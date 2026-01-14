@@ -20,6 +20,8 @@
                     <li><a href="games.php">Games</a></li>
                     <li><a href="about.php">About Us</a></li>
                     <li><a href="how-to-play.php">How to Play</a></li>
+                    <li><a href="faq.php">FAQ</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </nav>
             <div class="credits-display">
@@ -121,6 +123,42 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>KACHWAHA</h3>
+                    <p>Your trusted platform for free social casino games. Play responsibly and have fun!</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.php">Home</a></li>
+                        <li><a href="games.php">Games</a></li>
+                        <li><a href="about.php">About Us</a></li>
+                        <li><a href="faq.php">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.php">Terms & Conditions</a></li>
+                        <li><a href="privacy.php">Privacy Policy</a></li>
+                        <li><a href="disclaimer.php">Disclaimer</a></li>
+                        <li><a href="responsible-gaming.php">Responsible Gaming</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="contact.php">Contact Us</a></li>
+                        <li><a href="mailto:info@kachwaha.com">Email: info@kachwaha.com</a></li>
+                        <li>Bokaro, Jharkhand, India</li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2025 KACHWAHA ENGINEERING SERVICES (OPC) PRIVATE LIMITED. All rights reserved.</p>
                 <p>This is a social casino platform for entertainment purposes only. No real money gambling is involved.</p>
