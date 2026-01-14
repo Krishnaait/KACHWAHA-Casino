@@ -160,6 +160,36 @@ class ThreePatti {
         return 'High Card';
     }
 
+    revealDealerCards() {
+        // Update the game area to show all dealer cards
+        const gameArea = document.getElementById('game-area');
+        if (!gameArea) return;
+
+        gameArea.innerHTML = `
+            <div class="game-display">
+                <div class="player-section">
+                    <h3>Your Hand</h3>
+                    <div class="cards-display">
+                        ${this.playerHand.map(card => this.renderCard(card)).join('')}
+                    </div>
+                    <div class="hand-rank">${this.getHandRank(this.playerHand)}</div>
+                </div>
+
+                <div class="dealer-section">
+                    <h3>Dealer's Hand</h3>
+                    <div class="cards-display">
+                        ${this.dealerHand.map(card => this.renderCard(card)).join('')}
+                    </div>
+                    <div class="hand-rank">${this.getHandRank(this.dealerHand)}</div>
+                </div>
+
+                <div class="bet-info">
+                    <p>Current Bet: <strong>${this.playerBet} Credits</strong></p>
+                </div>
+            </div>
+        `;
+    }
+
     showGameControls() {
         const controlsArea = document.getElementById('game-controls');
         if (!controlsArea) return;
@@ -209,6 +239,9 @@ class ThreePatti {
     }
 
     endGame(playerWins) {
+        // Reveal all dealer cards
+        this.revealDealerCards();
+        
         const resultArea = document.getElementById('game-result');
         if (!resultArea) return;
 

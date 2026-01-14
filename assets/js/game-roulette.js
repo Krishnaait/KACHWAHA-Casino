@@ -23,7 +23,6 @@ class Roulette {
     }
 
     initGame() {
-        this.setupEventListeners();
         this.renderRoulette();
     }
 
@@ -115,7 +114,9 @@ class Roulette {
 
         container.innerHTML = html;
         this.drawWheel();
-        this.setupEventListeners();
+        
+        // Setup event listeners AFTER HTML is rendered
+        setTimeout(() => this.setupEventListeners(), 100);
     }
 
     drawWheel() {
