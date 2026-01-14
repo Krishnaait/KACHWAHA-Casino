@@ -17,7 +17,7 @@
     <!-- HEADER & NAVIGATION -->
     <header>
         <div class="header-container">
-            <a href="index.php" class="logo"><img src="assets/images/kachwaha-logo.png" alt="KACHWAHA Casino" style="height: 50px;"></a>
+            <a href="index.php" class="logo"><img src="assets/images/kachwaha-logo.webp" alt="KACHWAHA Casino" style="height: 50px;"></a>
             <nav>
                 <ul>
                     <li><a href="index.php">Home</a></li>
@@ -38,7 +38,7 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="hero-banner" style="background-image: url('assets/images/hero-banner.jpg');">
+        <div class="hero-banner" style="background-image: url('assets/images/hero-banner.webp');">
             <div class="hero-banner-content">
                 <h1>🎰 KACHWAHA CASINO 🎰</h1>
                 <p>Play Free Social Casino Games - Pure Entertainment!</p>

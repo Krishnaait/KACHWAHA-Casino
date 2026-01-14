@@ -13,7 +13,7 @@
     <!-- HEADER -->
     <header>
         <div class="header-container">
-            <a href="../index.php" class="logo"><img src="../assets/images/kachwaha-logo.png" alt="KACHWAHA Casino" style="height: 50px;"></a>
+            <a href="../index.php" class="logo"><img src="../assets/images/kachwaha-logo.webp" alt="KACHWAHA Casino" style="height: 50px;"></a>
             <nav>
                 <ul>
                     <li><a href="../index.php">Home</a></li>
@@ -44,7 +44,7 @@
     <section class="games-section">
         <div class="games-grid">
             <div class="game-card" onclick="window.location.href='game-3patti.php'">
-                <div class="game-card-image" style="background-image: url('../assets/images/game-3patti.jpg');"></div>
+                <div class="game-card-image" style="background-image: url('../assets/images/game-3patti.webp');"></div>
                 <div class="game-card-header">
                     <h3>🃏 3 Patti</h3>
                     <span class="game-badge">Popular</span>
@@ -56,7 +56,7 @@
             </div>
 
             <div class="game-card" onclick="window.location.href='game-roulette.php'">
-                <div class="game-card-image" style="background-image: url('../assets/images/game-roulette.jpg');"></div>
+                <div class="game-card-image" style="background-image: url('../assets/images/game-roulette.webp');"></div>
                 <div class="game-card-header">
                     <h3>🎡 Roulette</h3>
                     <span class="game-badge">Classic</span>
@@ -68,7 +68,7 @@
             </div>
 
             <div class="game-card" onclick="window.location.href='game-spinwheel.php'">
-                <div class="game-card-image" style="background-image: url('../assets/images/game-spinwheel.jpg');"></div>
+                <div class="game-card-image" style="background-image: url('../assets/images/game-spinwheel.webp');"></div>
                 <div class="game-card-header">
                     <h3>🎪 Spin Wheel</h3>
                     <span class="game-badge">Lucky</span>
@@ -80,7 +80,7 @@
             </div>
 
             <div class="game-card" onclick="window.location.href='game-bingo.php'">
-                <div class="game-card-image" style="background-image: url('../assets/images/game-bingo.jpg');"></div>
+                <div class="game-card-image" style="background-image: url('../assets/images/game-bingo.webp');"></div>
                 <div class="game-card-header">
                     <h3>🎯 Bingo</h3>
                     <span class="game-badge">Exciting</span>

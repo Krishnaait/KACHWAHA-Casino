@@ -1,0 +1,16 @@
+# robots.txt for KACHWAHA Casino
+# https://www.kachwaha.com
+
+User-agent: *
+Allow: /
+Allow: /pages/
+Allow: /assets/
+
+# Disallow admin or private directories (if any in future)
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://www.kachwaha.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
