@@ -15,7 +15,6 @@ class CreditSystem {
         if (!this.getCredits()) {
             this.setCredits(1000);
         }
-        this.checkDailyBonus();
         // Update display after initialization to show correct credits
         this.updateDisplay();
     }
@@ -43,16 +42,7 @@ class CreditSystem {
         return false;
     }
 
-    checkDailyBonus() {
-        const today = new Date().toDateString();
-        const lastBonus = localStorage.getItem(this.lastBonusKey);
 
-        if (lastBonus !== today) {
-            this.addCredits(200);
-            localStorage.setItem(this.lastBonusKey, today);
-            this.showNotification('Daily Bonus: +200 Credits!', 'success');
-        }
-    }
 
     resetCredits() {
         this.setCredits(500);
@@ -181,12 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
-    // Daily bonus button
-    const bonusBtn = document.querySelector('[data-action="daily-bonus"]');
-    if (bonusBtn) {
-        bonusBtn.addEventListener('click', () => {
-            window.creditSystem.checkDailyBonus();
-        });
     }
 
     // Reset credits button

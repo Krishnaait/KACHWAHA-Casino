@@ -156,14 +156,6 @@ class Roulette {
         ctx.arc(centerX, centerY, 15, 0, Math.PI * 2);
         ctx.fillStyle = '#d4af37';
         ctx.fill();
-
-        // Draw pointer
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY - radius - 20);
-        ctx.lineTo(centerX - 10, centerY - radius);
-        ctx.lineTo(centerX + 10, centerY - radius);
-        ctx.fillStyle = '#d4af37';
-        ctx.fill();
     }
 
     getNumberColor(num) {
@@ -179,6 +171,20 @@ class Roulette {
 
         const betInput = document.getElementById('roulette-bet');
         this.currentBet = parseInt(betInput.value) || 50;
+
+        // Remove previous selection highlighting
+        document.querySelectorAll('.roulette-number, .roulette-color, .roulette-oddeven').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+
+        // Add selection highlighting to clicked button
+        if (type === 'number') {
+            document.querySelector(`.roulette-number[data-number="${value}"]`)?.classList.add('selected');
+        } else if (type === 'color') {
+            document.querySelector(`.roulette-color[data-color="${value}"]`)?.classList.add('selected');
+        } else if (type === 'oddeven') {
+            document.querySelector(`.roulette-oddeven[data-type="${value}"]`)?.classList.add('selected');
+        }
 
         let betDisplay = '';
         if (type === 'number') {

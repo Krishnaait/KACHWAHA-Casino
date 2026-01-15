@@ -62,21 +62,6 @@
                 <h3>Starting Credits</h3>
                 <p>When you first visit KACHWAHA, you receive <strong>1000 virtual credits</strong>. These credits are stored in your browser's local storage and are specific to your device.</p>
 
-                <h3>Daily Bonus</h3>
-                <p>Every day, you can claim <strong>200 free credits</strong> by clicking the "Claim Daily Bonus" button. This bonus resets every 24 hours.</p>
-
-                <h3>Free Top-up</h3>
-                <p>When your credits reach <strong>0</strong>, you can click the "Free Top-up" button to receive <strong>500 free credits</strong> and continue playing. You can do this unlimited times!</p>
-
-                <h3>How Credits Work</h3>
-                <ul>
-                    <li>💰 Credits are virtual currency used only for gameplay</li>
-                    <li>💰 Credits have no real-world value</li>
-                    <li>💰 Credits cannot be withdrawn or exchanged for money</li>
-                    <li>💰 Credits are stored locally on your device</li>
-                    <li>💰 Clearing your browser cache will reset your credits</li>
-                </ul>
-            </div>
 
             <!-- EACH GAME -->
             <div class="game-explanation" style="margin-bottom: 2rem;">
@@ -189,7 +174,6 @@
                     <li>🎮 Play multiple games to find your favorite</li>
                     <li>🎮 Take regular breaks to avoid fatigue</li>
                     <li>🎮 Remember it's just for fun and entertainment</li>
-                    <li>🎮 Claim your daily bonus every day</li>
                 </ul>
 
                 <h3>Game-Specific Tips</h3>

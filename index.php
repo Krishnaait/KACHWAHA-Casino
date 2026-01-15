@@ -84,9 +84,6 @@
 
             <div class="feature-card">
                 <div class="feature-icon">⭐</div>
-                <h3>Daily Bonuses</h3>
-                <p>Receive 200 free credits every day. When credits run out, get a free top-up of 500 credits to keep playing.</p>
-            </div>
 
             <div class="feature-card">
                 <div class="feature-icon">🎯</div>
@@ -164,8 +161,6 @@
                         <div class="amount">1000</div>
                     </div>
                     <div class="credit-box">
-                        <label>Daily Bonus</label>
-                        <div class="amount">+200</div>
                     </div>
                     <div class="credit-box">
                         <label>Free Top-up</label>
@@ -193,9 +188,6 @@
                     <li><strong>Choose Your Game:</strong> Select from 3 Patti, Roulette, Spin Wheel, or Bingo.</li>
                     <li><strong>Place Your Bet:</strong> Decide how many credits you want to wager on each game.</li>
                     <li><strong>Play & Win:</strong> Play the game and win credits based on the outcome. All games use fair random number generation.</li>
-                    <li><strong>Daily Bonuses:</strong> Log in every day to claim 200 free credits. Never run out of credits!</li>
-                </ol>
-            </div>
         </div>
     </section>
 

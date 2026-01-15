@@ -104,9 +104,6 @@
                     <div class="amount" id="current-balance">1000</div>
                 </div>
                 <div class="credit-box">
-                    <label>Daily Bonus</label>
-                    <button class="btn btn-secondary btn-small" data-action="daily-bonus" style="width: 100%; margin-top: 0.5rem;">Claim +200</button>
-                </div>
                 <div class="credit-box">
                     <label>Free Top-up</label>
                     <button class="btn btn-secondary btn-small" data-action="topup-credits" style="width: 100%; margin-top: 0.5rem;">Get +500</button>

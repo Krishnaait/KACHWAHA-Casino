@@ -1235,3 +1235,30 @@ footer {
         height: 35px;
     }
 }
+
+/* ===== ROULETTE GAME SPECIFIC STYLES ===== */
+.roulette-number, .roulette-color, .roulette-oddeven {
+    transition: all 0.3s ease;
+}
+
+.roulette-number.selected,
+.roulette-color.selected,
+.roulette-oddeven.selected {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--accent-gold), 0 0 40px var(--accent-gold);
+    border: 3px solid var(--accent-gold) !important;
+    font-weight: bold;
+}
+
+.roulette-number.selected {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px var(--accent-gold), 0 0 40px var(--accent-gold);
+    }
+    50% {
+        box-shadow: 0 0 30px var(--accent-gold), 0 0 60px var(--accent-gold);
+    }
+}

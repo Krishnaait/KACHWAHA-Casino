@@ -144,11 +144,6 @@
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>What is the daily bonus?</span>
-                    <span class="faq-toggle">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Every day, you can claim 200 free credits by clicking the "Claim Daily Bonus" button. This bonus resets every 24 hours, so you can claim it once per day. It's a great way to keep playing without running out of credits!</p>
                 </div>
             </div>
 
@@ -252,7 +247,7 @@
                     <span class="faq-toggle">▼</span>
                 </div>
                 <div class="faq-answer">
-                    <p>Your credits are stored in your browser's local storage. They may have been cleared if you cleared your browser cache, cookies, or browsing data. You can always get free top-up credits or claim your daily bonus to continue playing.</p>
+                    <p>Your credits are stored in your browser's local storage. They may have been cleared if you cleared your browser cache, cookies, or browsing data. You can always get free top-up credits to continue playing.</p>
                 </div>
             </div>
 
