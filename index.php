@@ -158,6 +158,8 @@
                         <div class="amount">1000</div>
                     </div>
                     <div class="credit-box">
+                        <label>Win/Lose</label>
+                        <div class="amount">±Credits</div>
                     </div>
                     <div class="credit-box">
                         <label>Free Top-up</label>

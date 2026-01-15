@@ -178,14 +178,14 @@ class Roulette {
         indicator.className = 'roulette-indicator';
         indicator.style.cssText = `
             position: absolute;
-            top: -20px;
+            top: 5px;
             left: 50%;
             transform: translateX(-50%);
             width: 0;
             height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 25px solid #d4af37;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 20px solid #d4af37;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
             z-index: 10;
         `;

@@ -1274,3 +1274,39 @@ footer {
         box-shadow: 0 0 30px var(--accent-gold), 0 0 60px var(--accent-gold);
     }
 }
+
+/* ===== ROULETTE WHEEL CONTAINER SIZING ===== */
+.roulette-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.roulette-wheel {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    position: relative;
+}
+
+.roulette-wheel canvas {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .roulette-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .roulette-wheel {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+}
