@@ -143,7 +143,7 @@ nav a:hover::after {
 /* ===== HERO SECTION ===== */
 .hero {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 50%, var(--accent-purple-dark) 100%);
-    padding: 6rem 2rem;
+    padding: 3rem 2rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -322,7 +322,7 @@ nav a:hover::after {
 /* ===== GAMES SECTION ===== */
 .games-section {
     max-width: 1400px;
-    margin: 4rem auto;
+    margin: 2rem auto;
     padding: 0 2rem;
 }
 
@@ -388,15 +388,15 @@ nav a:hover::after {
 /* ===== GAME PAGE STYLES ===== */
 .game-container {
     max-width: 1000px;
-    margin: 2rem auto;
-    padding: 2rem;
+    margin: 1rem auto;
+    padding: 1.5rem;
 }
 
 .game-header {
     background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark));
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
@@ -434,10 +434,10 @@ nav a:hover::after {
 
 .game-explanation {
     background: var(--primary-light);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
     border-left: 4px solid var(--accent-gold);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .game-explanation h2 {
@@ -451,8 +451,8 @@ nav a:hover::after {
 }
 
 .game-explanation li {
-    margin-bottom: 0.8rem;
-    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
 }
 
 .game-canvas-container {
@@ -525,10 +525,10 @@ canvas {
 /* ===== CREDIT SYSTEM ===== */
 .credit-section {
     background: var(--primary-light);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: var(--border-radius);
     border: 2px solid var(--accent-gold);
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     text-align: center;
 }
 
@@ -748,7 +748,7 @@ footer {
     }
 
     .hero {
-        padding: 3rem 1rem;
+        padding: 2rem 1rem;
     }
 
     nav ul {
@@ -781,7 +781,7 @@ footer {
     }
 
     .game-explanation {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 }
 
@@ -1155,7 +1155,7 @@ footer {
 /* ===== HERO BANNER STYLING ===== */
 .hero-banner {
     width: 100%;
-    height: 400px;
+    height: 300px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1252,14 +1252,18 @@ footer {
 .roulette-number.selected,
 .roulette-color.selected,
 .roulette-oddeven.selected {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px var(--accent-gold), 0 0 40px var(--accent-gold);
+    transform: scale(1.15);
+    box-shadow: 0 0 20px var(--accent-gold), 0 0 40px var(--accent-gold), inset 0 0 15px rgba(212, 175, 55, 0.5);
     border: 3px solid var(--accent-gold) !important;
+    background: linear-gradient(135deg, var(--accent-gold), #fbbf24) !important;
+    color: var(--primary-dark) !important;
     font-weight: bold;
+    z-index: 10;
+    position: relative;
 }
 
 .roulette-number.selected {
-    animation: pulse 1s infinite;
+    animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {

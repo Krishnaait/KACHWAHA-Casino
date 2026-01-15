@@ -24,6 +24,7 @@ class Roulette {
 
     initGame() {
         this.renderRoulette();
+        setTimeout(() => this.drawStaticIndicator(), 100);
     }
 
     setupEventListeners() {
@@ -128,6 +129,9 @@ class Roulette {
         const centerY = canvas.height / 2;
         const radius = 140;
 
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
         // Draw wheel
         for (let i = 0; i < 37; i++) {
             const angle = (i / 37) * Math.PI * 2;
@@ -156,18 +160,40 @@ class Roulette {
         ctx.arc(centerX, centerY, 15, 0, Math.PI * 2);
         ctx.fillStyle = '#d4af37';
         ctx.fill();
+    }
 
-        // Draw static golden indicator at top (non-moving pointer)
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY - radius - 10); // Point at top
-        ctx.lineTo(centerX - 15, centerY - radius + 10); // Left base
-        ctx.lineTo(centerX + 15, centerY - radius + 10); // Right base
-        ctx.closePath();
-        ctx.fillStyle = '#d4af37'; // Golden color
-        ctx.strokeStyle = '#000';
-        ctx.lineWidth = 2;
-        ctx.fill();
-        ctx.stroke();
+    drawStaticIndicator() {
+        // Draw static indicator outside the canvas that doesn't rotate
+        const canvas = document.getElementById('roulette-canvas');
+        if (!canvas) return;
+
+        // Remove existing indicator if any
+        const existingIndicator = document.querySelector('.roulette-indicator');
+        if (existingIndicator) {
+            existingIndicator.remove();
+        }
+
+        // Create indicator element
+        const indicator = document.createElement('div');
+        indicator.className = 'roulette-indicator';
+        indicator.style.cssText = `
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 25px solid #d4af37;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            z-index: 10;
+        `;
+
+        // Add to wheel container
+        const wheelContainer = canvas.parentElement;
+        wheelContainer.style.position = 'relative';
+        wheelContainer.appendChild(indicator);
     }
 
     getNumberColor(num) {
