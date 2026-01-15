@@ -248,6 +248,13 @@ class Roulette {
             return;
         }
 
+        // Read bet amount at spin time to get the latest value
+        const betInput = document.getElementById('roulette-bet');
+        this.currentBet = parseInt(betInput.value) || 50;
+        
+        // Update display with current bet amount
+        document.getElementById('bet-amount-display').textContent = this.currentBet;
+
         if (!window.creditSystem.deductCredits(this.currentBet)) {
             soundSystem.playSound('loss');
             window.creditSystem.showNotification('Insufficient credits!', 'error');
