@@ -159,20 +159,17 @@ class SoundSystem {
 
 // ===== GLOBAL INSTANCES =====
 // Make these globally accessible to all game files
-window.creditSystem = null;
-window.soundSystem = null;
+// Initialize immediately so games can use them
+window.creditSystem = new CreditSystem();
+window.soundSystem = new SoundSystem();
 
-// Initialize on page load
+// Setup event listeners on page load
 document.addEventListener('DOMContentLoaded', () => {
-    window.creditSystem = new CreditSystem();
-    window.soundSystem = new SoundSystem();
     setupEventListeners();
 });
 
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
-    }
-
     // Reset credits button
     const resetBtn = document.querySelector('[data-action="reset-credits"]');
     if (resetBtn) {
