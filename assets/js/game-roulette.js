@@ -156,6 +156,18 @@ class Roulette {
         ctx.arc(centerX, centerY, 15, 0, Math.PI * 2);
         ctx.fillStyle = '#d4af37';
         ctx.fill();
+
+        // Draw static golden indicator at top (non-moving pointer)
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY - radius - 10); // Point at top
+        ctx.lineTo(centerX - 15, centerY - radius + 10); // Left base
+        ctx.lineTo(centerX + 15, centerY - radius + 10); // Right base
+        ctx.closePath();
+        ctx.fillStyle = '#d4af37'; // Golden color
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.fill();
+        ctx.stroke();
     }
 
     getNumberColor(num) {

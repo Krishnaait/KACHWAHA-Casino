@@ -83,9 +83,6 @@
             </div>
 
             <div class="feature-card">
-                <div class="feature-icon">⭐</div>
-
-            <div class="feature-card">
                 <div class="feature-icon">🎯</div>
                 <h3>Fair Gaming</h3>
                 <p>All games use random number generation to ensure fair and unbiased results. No hidden algorithms or cheating.</p>
