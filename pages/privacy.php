@@ -44,7 +44,7 @@
     <section class="features">
         <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
             <div class="game-explanation">
-                <p><strong>Last Updated: January 2025</strong></p>
+                <p><strong>Last Updated: January 2026</strong></p>
 
                 <h2>1. Introduction</h2>
                 <p>KACHWAHA ENGINEERING SERVICES (OPC) PRIVATE LIMITED ("KACHWAHA," "we," "us," or "our") operates KACHWAHA.com. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
@@ -220,7 +220,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 KACHWAHA ENGINEERING SERVICES (OPC) PRIVATE LIMITED. All rights reserved.</p>
+                <p>&copy; 2026 KACHWAHA ENGINEERING SERVICES (OPC) PRIVATE LIMITED. All rights reserved.</p>
                 <p>This is a social casino platform for entertainment purposes only. No real money gambling is involved.</p>
             </div>
         </div>

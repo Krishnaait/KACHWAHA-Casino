@@ -44,7 +44,7 @@
     <section class="features">
         <div style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
             <div class="game-explanation">
-                <p><strong>Last Updated: January 2025</strong></p>
+                <p><strong>Last Updated: January 2026</strong></p>
 
                 <h2>1. Acceptance of Terms</h2>
                 <p>By accessing and using KACHWAHA (www.kachwahaengg.com), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
@@ -171,7 +171,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 KACHWAHA ENGINEERING SERVICES (OPC) PRIVATE LIMITED. All rights reserved.</p>
+                <p>&copy; 2026 KACHWAHA ENGINEERING SERVICES (OPC) PRIVATE LIMITED. All rights reserved.</p>
                 <p>This is a social casino platform for entertainment purposes only. No real money gambling is involved.</p>
             </div>
         </div>

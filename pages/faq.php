@@ -372,7 +372,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 KACHWAHA ENGINEERING SERVICES (OPC) PRIVATE LIMITED. All rights reserved.</p>
+                <p>&copy; 2026 KACHWAHA ENGINEERING SERVICES (OPC) PRIVATE LIMITED. All rights reserved.</p>
                 <p>This is a social casino platform for entertainment purposes only. No real money gambling is involved.</p>
             </div>
         </div>
