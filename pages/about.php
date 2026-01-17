@@ -52,8 +52,10 @@
                 
                 <h3>Head Office</h3>
                 <p>C/O ASHA SINGH, CHAS BOKARO<br>
-                PATEL NAGAR, Bokaro Steel City<br>
-                Bokaro, Jharkhand 827013<br>
+                CHAS BOKARO, Chas (Bokaro)<br>
+                PATEL NAGAR<br>
+                Bokaro Steel City<br>
+                Bokaro, Jharkhand, 827013<br>
                 India</p>
 
                 <h3>Regional Office</h3>
@@ -200,7 +202,7 @@
                     <ul>
                         <li><a href="contact.php">Contact Us</a></li>
                         <li><a href="mailto:info@kachwaha.com">Email: info@kachwaha.com</a></li>
-                        <li>Bokaro, Jharkhand, India</li>
+                        <li style="line-height: 1.6;">C/O ASHA SINGH, CHAS BOKARO<br>PATEL NAGAR, Bokaro Steel City<br>Bokaro, Jharkhand, 827013</li>
                     </ul>
                 </div>
             </div>
